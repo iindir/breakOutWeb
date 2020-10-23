@@ -4,7 +4,7 @@ Iterating on the foundation laid by Mozilla tutorial
 current version : v0.0.1a
 
 toDo:
-- ~~improve collision
+- ~~improve collision~~
 - experiment with var brickImmune
 - figure out brick array to add control over game logic
 - fancy up art
