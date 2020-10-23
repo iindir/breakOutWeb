@@ -86,22 +86,18 @@ function collisionDetection() {
 					x + ballRadius > b.x &&
 					y - ballRadius < b.y + brickHeight &&
 					y + ballRadius > b.y) {
-					if (x + ballRadius-1 < b.x ||
-						x - ballRadius+1 > b.x + brickWidth
+					if ((x + ballRadius-1 < b.x && dx > 0) ||
+						(x - ballRadius+1 > b.x + brickWidth && dx <0)
 						){
 						dx = -dx
+						return
 					} else {
 						dy = -dy
 						b.status--;
-					}
-					if (b.status < 1){
-						score++;
-					}
-					if(score >= tileCount){
-						resetTileCount();
-						resetGame();
-						score = 0;
-						running = false;
+						if (b.status < 1){
+							score++;
+						}	
+						return
 					}
                 }
             }
@@ -237,11 +233,20 @@ function drawTileCount() {
   ctx.fillStyle = "#004d13";
   ctx.fillText("Target: "+tileCount, 88, 13);
 }
+function updateGameState(){
+	if(score >= tileCount){
+		resetTileCount();
+		resetGame();
+		score = 0;
+		running = false;
+	}
+}
 
 function updateGameLogic(times){
 	for (var i = 0; i < times; i++){
 		collisionDetection();
 		collision();
+		updateGameState();
 		if(running == true){
 			ballVector();
 		}
