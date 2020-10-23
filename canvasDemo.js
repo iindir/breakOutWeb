@@ -26,6 +26,7 @@ var hitBoxLf = x - ballRadius //* These don't actually
 var hitBoxRt = x + ballRadius //* do anything
 var hitBoxTp = y - ballRadius //* just for
 var hitBoxBt = y + ballRadius //* convenient copy paste
+var difficulty = 0 //increment to make easier
 
 document.addEventListener("mousemove", mouseMoveHandler, false);
 document.addEventListener("click", mouseClickHandler, false);
@@ -45,7 +46,7 @@ function mouseMoveHandler(e) {
 }
 
 function randomGenerator(){
-	randomNumber = Math.floor(Math.random()* 4);
+	randomNumber = Math.floor(Math.random()* 4) - difficulty;
 }
 
 for(var c=0; c<brickColumnCount; c++) {
@@ -99,6 +100,7 @@ function collisionDetection() {
 						resetTileCount();
 						resetGame();
 						score = 0;
+						running = false;
 					}
                 }
             }
