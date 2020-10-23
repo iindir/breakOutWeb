@@ -27,6 +27,7 @@ var hitBoxRt = x + ballRadius //* do anything
 var hitBoxTp = y - ballRadius //* just for
 var hitBoxBt = y + ballRadius //* convenient copy paste
 var difficulty = 0 //increment to make easier
+var logicTicks = 10 //currently tied to ball speed
 
 document.addEventListener("mousemove", mouseMoveHandler, false);
 document.addEventListener("click", mouseClickHandler, false);
@@ -221,7 +222,7 @@ function drawPaddle() {
 	ctx.fill();
 }
 
-function tripleAGraphics(){
+function ballVector(){
 	x += dx;
     y += dy;
 }
@@ -241,11 +242,8 @@ function updateGameLogic(times){
 	for (var i = 0; i < times; i++){
 		collisionDetection();
 		collision();
-		if (deBugGame == true){
-			drawHitBox();
-		}
 		if(running == true){
-			tripleAGraphics();
+			ballVector();
 		}
 		if(running == false){
 			x = paddleX + paddleWidth/2
@@ -257,6 +255,9 @@ function updateGameLogic(times){
 }
 
 function renderMachine(){
+	if (deBugGame == true){
+		drawHitBox();
+	}
 	drawBall();
 	drawPaddle();
 	drawTileCount();
@@ -267,7 +268,7 @@ function renderMachine(){
 
 function draw() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	updateGameLogic(10);
+	updateGameLogic(logicTicks);
 	renderMachine();
 	requestAnimationFrame(draw);
 }
