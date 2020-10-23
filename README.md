@@ -13,4 +13,5 @@ toDo:
 - menu button
 - pause game
 - ball speed & direction
+- experiment with var paddleVelocity
 -
