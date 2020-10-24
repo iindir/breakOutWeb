@@ -14,4 +14,6 @@ toDo:
 - pause game
 - ball speed & direction
 - experiment with var paddleVelocity
+- https://mdn.github.io/dom-examples/pointer-lock/
+- change to delta controls for mouse and touch
 -
