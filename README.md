@@ -1,5 +1,5 @@
 # breakOutWeb
-[canvasDemo.html]
+[/canvasDemo.html]
 Iterating on the foundation laid by Mozilla tutorial
 
 current version : v0.0.1a
